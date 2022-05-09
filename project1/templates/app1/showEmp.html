@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>SHOW Employees</title>
+{% endblock %}
+
+
+{% block content %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">CUSTOMER ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">MAIL</th>
+      <th scope="col">SALARY</th>
+        <th scope="col">ADDRESS</th>
+        <th>UPDATE</th>
+        <th>DELETE</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in obj %}
+    <tr>
+        <td>{{i.eid}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.mail}}</td>
+        <td>{{i.sal}}</td>
+        <td>{{i.address}}</td>
+        <td><button class="btn btn-warning"><a href="{% url 'updateEmp_url' i.id %}">UPDATE</a></button></td>
+        <td><button class="btn btn-danger"><a href="{% url 'deleteEmp_url' i.id %}">DELETE</a></button></td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
